@@ -141,3 +141,63 @@ $(document).ready(function () {
     }
   
   });
+
+  $(document).ready(function() {
+    // Array to store search history
+    let searchHistory = [];
+  
+    // Function to render search history
+    function renderSearchHistory() {
+      $(".history").empty();
+      for (let i = 0; i < searchHistory.length; i++) {
+        const city = searchHistory[i];
+        const listItem = $("<li>")
+          .addClass("list-group-item")
+          .text(city);
+        $(".history").prepend(listItem);
+      }
+    }
+  
+
+    // clear button
+    // Function to handle search
+    function handleSearch() {
+      const city = $("#search-value").val().trim();
+      if (city !== "") {
+        // Add city to search history
+        searchHistory.push(city);
+        // Render search history
+        renderSearchHistory();
+        // Clear the search input field
+        $("#search-value").val("");
+      }
+    }
+  
+    // Function to clear search history
+    function clearSearchHistory() {
+      searchHistory = [];
+      $(".history").empty();
+    }
+  
+    // Event listener for search button click
+    $("#search-button").on("click", function(event) {
+      event.preventDefault();
+      handleSearch();
+    });
+  
+    // Event listener for Enter key press in search input
+    $("#search-value").on("keyup", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        handleSearch();
+      }
+    });
+  
+    // Event listener for clear history button click
+    $("#clear-history-button").on("click", function() {
+      clearSearchHistory();
+    });
+  });
+  
+  
+  
