@@ -72,21 +72,18 @@ $(document).ready(function () {
         console.log(data)
         var lon = data.coord.lon;
         var lat = data.coord.lat;
-  
+        
         $.ajax({
           type: "GET",
-          url: "https://api.openweathermap.org/data/2.5/uvi?appid=9bbae45a623be15f4f59423b852c2032=" + lat + "&lon=" + lon,
-  
-  
-        }).then(function (response) {
+          url: "https://api.openweathermap.org/data/2.5/uvi?appid=9bbae45a623be15f4f59423b852c2032&lat=" + lat + "&lon=" + lon,
+        }).then(function(response) {
           console.log(response);
-  
+        
           var uvColor;
           var uvResponse = response.value;
           var uvIndex = $("<p>").addClass("card-text").text("UV Index: ");
           var btn = $("<span>").addClass("btn btn-sm").text(uvResponse);
-  
-  
+        
           if (uvResponse < 3) {
             btn.addClass("btn-success");
           } else if (uvResponse < 7) {
@@ -94,11 +91,11 @@ $(document).ready(function () {
           } else {
             btn.addClass("btn-danger");
           }
-  
+        
           cardBody.append(uvIndex);
           $("#today .card-body").append(uvIndex.append(btn));
-  
         });
+        
   
         // merge and add to page
         title.append(img);
@@ -158,20 +155,20 @@ $(document).ready(function () {
       }
     }
   
-
-    // clear button
     // Function to handle search
-    function handleSearch() {
-      const city = $("#search-value").val().trim();
-      if (city !== "") {
-        // Add city to search history
-        searchHistory.push(city);
-        // Render search history
-        renderSearchHistory();
-        // Clear the search input field
-        $("#search-value").val("");
-      }
-    }
+  // Function to handle search
+function handleSearch() {
+  const city = $("#search-value").val().trim();
+  if (city !== "") {
+    // Add city to search history
+    searchHistory.push(city);
+    // Render search history
+    renderSearchHistory();
+    // Clear the search input field
+    $("#search-value").val("");
+  }
+}
+
   
     // Function to clear search history
     function clearSearchHistory() {
@@ -198,6 +195,4 @@ $(document).ready(function () {
       clearSearchHistory();
     });
   });
-  
-  
   
