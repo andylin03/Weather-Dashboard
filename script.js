@@ -155,7 +155,7 @@ $(document).ready(function () {
       }
     }
   
-    // Function to handle search
+
   // Function to handle search
 function handleSearch() {
   const city = $("#search-value").val().trim();
@@ -195,4 +195,6 @@ function handleSearch() {
       clearSearchHistory();
     });
   });
+
+
   
