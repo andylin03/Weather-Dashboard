@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: lightgrey;
 }
 
 .container-fluid {
@@ -149,7 +149,28 @@ header {
 .list-group-item:hover {
     background-color: #ddd;
 }
-
+.weather-container {
+    display: flex;
+  }
+  
+  .weather-today {
+    flex: 0 0 33.33%;
+  }
+  
+  .weather-forecast {
+    flex: 0 0 66.66%;
+  }
+  
+  @media (max-width: 768px) {
+    .weather-container {
+      flex-direction: column;
+    }
+  
+    .weather-today,
+    .weather-forecast {
+      flex: 1 0 auto;
+    }
+  }
 @media (max-width: 768px) {
     .card {
         flex: 0 0 auto;
