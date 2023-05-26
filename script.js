@@ -44,7 +44,7 @@ $(document).ready(function () {
       renderSearchHistory();
     }
   }
-
+// API for current day
   function weatherFunction(searchTerm) {
     $.ajax({
       type: "GET",
@@ -94,7 +94,7 @@ $(document).ready(function () {
       $("#today").append(card);
     });
   }
-
+// API for 5 day forecast
   function weatherForecast(searchTerm) {
     $.ajax({
       type: "GET",

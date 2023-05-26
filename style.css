@@ -26,7 +26,7 @@ header {
     padding: 10px;
     text-align: center;
 }
-
+/* search button */
 .search {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -38,7 +38,7 @@ header {
     font-size: 30px;
     font-family: cursive;
 }
-
+/* button */
 .display {
     flex: 1;
     margin-right: 10px;
@@ -53,7 +53,7 @@ header {
     flex: 1;
     margin-right: 10px;
 }
-
+/* search button */
 .btn-primary {
     font-size: 18px;
     padding: 14px 20px;
@@ -74,6 +74,7 @@ header {
     padding: 0;
     margin: 0;
 }
+/* clear history */
 .btn-secondary {
     background-color: #333;
     color: #fff;
@@ -83,7 +84,7 @@ header {
     border-radius: 20px;
 
 }
-
+/* search history boxes */
 .list-group-item {
     padding: 5px 10px;
     cursor: pointer;
@@ -110,7 +111,7 @@ header {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
-
+/* 5 day forecast */
 .card-deck {
     display: flex;
     flex-wrap: nowrap;
@@ -134,21 +135,21 @@ header {
 .card:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
+/* 5 day forecast format */
 .row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-/* Additional color styles */
+/* color for the cities in search history */
 .list-group-item {
-    color: #333;
+    color: red;
 }
-
 .list-group-item:hover {
-    background-color: #ddd;
+    background-color: #333;
 }
+/* moving 5 day forecast aligned to the current day */
 .weather-container {
     display: flex;
   }
@@ -161,6 +162,10 @@ header {
     flex: 0 0 66.66%;
   }
   
+
+
+
+  /* media query */
   @media (max-width: 768px) {
     .weather-container {
       flex-direction: column;
