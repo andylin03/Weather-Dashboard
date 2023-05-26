@@ -29,14 +29,26 @@ $(document).ready(function () {
     }
   }
 
-  function handleSearch() {
-    var city = $("#search-value").val().trim();
-    if (city !== "") {
-      searchHistory.push(city);
-      renderSearchHistory();
-      $("#search-value").val("");
+  $(document).ready(function () {
+    // Event listener for list item click in search history
+    $(".history").on("click", "li", function () {
+      var city = $(this).text();
+      handleSearch(city);
+    });
+  
+  
+    function handleSearch(city) {
+      if (city !== "") {
+        searchHistory.push(city);
+        renderSearchHistory();
+        $("#search-value").val("");
+  
+        weatherFunction(city);
+        weatherForecast(city);
+      }
     }
-  }
+  });
+  
 
   function clearSearchHistory() {
     searchHistory = [];
@@ -130,7 +142,7 @@ $(document).ready(function () {
       url: "https://api.openweathermap.org/data/2.5/forecast?q=" + searchTerm + "&appid=9bbae45a623be15f4f59423b852c2032&units=imperial",
     }).then(function (data) {
       $("#forecast").html("<h4 class=\"mt-3\">5-Day Forecast:</h4>").append("<div class=\"row\">");
-
+  
       for (var i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
           var titleFive = $("<h3>").addClass("card-title").text(new Date(data.list[i].dt_txt).toLocaleDateString());
@@ -140,7 +152,7 @@ $(document).ready(function () {
           var cardBodyFive = $("<div>").addClass("card-body p-2");
           var humidFive = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
           var tempFive = $("<p>").addClass("card-text").text("Temperature: " + data.list[i].main.temp + " °F");
-
+  
           colFive.append(cardFive.append(cardBodyFive.append(titleFive, imgFive, tempFive, humidFive)));
           $("#forecast .row").append(colFive);
         }
