@@ -26,13 +26,13 @@ $(document).ready(function () {
       weatherForecast(city);
     }
   }
-
+// clear search
   function clearSearchHistory() {
     searchHistory = [];
     $(".history").empty();
     saveSearchHistory();
   }
-
+// save search history
   function saveSearchHistory() {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   }
@@ -136,7 +136,7 @@ $(document).ready(function () {
       handleSearch(searchTerm);
     }
   });
-
+// function for clear history 
   $("#clear-history-button").on("click", function () {
     clearSearchHistory();
   });
